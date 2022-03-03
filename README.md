@@ -1,6 +1,6 @@
 **Usage:**
 
-#1. Install python3 and Ansible*
+# 1. Install python3 and Ansible*
 ```
 sudo apt install python3 python3-pip
 sudo -H pip3 install --upgrade pip
@@ -40,7 +40,7 @@ cd /opt/git
 git clone https://github.com/deadmopozz/ddos-ripper-ansible.git
 ```
 
-2. Prepare inventory /opt/git/ddos-ripper-ansible/inventory/hosts:
+# 2. Prepare inventory /opt/git/ddos-ripper-ansible/inventory/hosts:
 
 - add your hosts as follow:
 ```
@@ -62,7 +62,7 @@ host1
 host2
 ```
 
-3. Run playbook and start/stop attack:
+# 3. Run playbook and start/stop attack:
 
 ## You must have the same username and password or ssh key for each server
 
