@@ -63,7 +63,7 @@ host2
 
 #3. Run playbook and start/stop attack:
 
-##You must have the same username and password or ssh key for each server**
+##You must have the same username and password or ssh key for each server
 
 ##If you use username and password for ssh authentication:
 ```
