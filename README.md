@@ -64,9 +64,9 @@ host2
 
 3. Run playbook and start/stop attack:
 
-#You must have the same username and password or ssh key for each server
+## You must have the same username and password or ssh key for each server
 
-#If you use username and password for ssh authentication:
+## If you use username and password for ssh authentication:
 ```
 cd /opt/git/ddos-ripper-ansible/playbooks/initial-setup
 ansible-playbook -i ../../inventory/hosts initial-setup.yml -b -kK -e ansible_user=user_name
@@ -87,7 +87,7 @@ cd /opt/git/ddos-ripper-ansible/playbooks/initial-setup
 ansible all -i ../../inventory/hosts -b -kK -e ansible_user=user_name -m shell -a "/tmp/ddos-ripper/ddos-ripper-stop.sh"
 ```
 
-##If you use ssh key for ssh authentication:
+## If you use ssh key for ssh authentication:
 ```
 cd /opt/git/ddos-ripper-ansible/playbooks/initial-setup
 ansible-playbook -i ../../inventory/hosts initial-setup.yml -b -kK -e ansible_user=user_name ansible_ssh_private_key_file="/path/to/your/ssh.key"
