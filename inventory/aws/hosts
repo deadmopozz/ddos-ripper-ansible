@@ -1,6 +1,0 @@
-[all]
-host1      ansible_host=172.30.125.130
-
-[all:vars]
-git_repo=https://github.com/palahsu/DDoS-Ripper.git
-git_dest=/tmp/ddos-ripper

@@ -1,0 +1,16 @@
+[all]
+#Add hosts to this group
+host1      ansible_host=127.0.0.1
+host2      ansible_host=127.0.0.2
+
+
+[all:vars]
+git_repo=https://github.com/palahsu/DDoS-Ripper.git
+git_dest=/tmp/ddos-ripper
+
+
+[group1]
+host1
+
+[group2]
+host2
