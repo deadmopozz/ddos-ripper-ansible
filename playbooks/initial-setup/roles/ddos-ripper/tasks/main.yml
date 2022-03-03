@@ -24,6 +24,25 @@
        - python3
        - python3-pip
 
+ - name: Add socks config for exit nodes
+   lineinfile:
+     path: /etc/tor/torrc
+     state: present
+     regexp: '^ExitNodes\s'
+     line: 'ExitNodes {ru}'
+
+ - name: Add socks config for exit nodes
+   lineinfile:
+     path: /etc/tor/torrc
+     state: present
+     regexp: '^StrictNodes\s'
+     line: 'StrictNodes 1'
+
+ - name: Restart tor service
+   systemd:
+     state: restarted
+     name: tor
+
  - name: Copy ddos-ripper start script
    template:
      src: "ddos-ripper-start.sh.j2"
@@ -39,3 +58,10 @@
      owner: root
      group: root
      mode: '0755'
+
+ - name: Check outgoing country
+   shell: geoiplookup $(torsocks -P 9050 curl -s ifconfig.me)
+   register: country
+
+ - debug:
+     var: country
