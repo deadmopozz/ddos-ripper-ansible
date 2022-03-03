@@ -1,0 +1,41 @@
+---
+ - name: "Create a directory for DDoS project"
+   file:
+     path: "{{ git_dest }}"
+     state: directory
+     mode: '0755'
+
+
+ - name: "Clone git repository for DDoS-Ripper"
+   git:
+     repo: "{{ git_repo }}"
+     dest: "{{ git_dest }}"
+
+ - name: "Update repositories cache and install common software"
+   apt:
+     name: "{{ item }}"
+     state: latest
+     update_cache: yes
+   with_items:
+       - tor
+       - tor-geoipdb
+       - proxychains
+       - geoip-bin
+       - python3
+       - python3-pip
+
+ - name: Copy ddos-ripper start script
+   template:
+     src: "ddos-ripper-start.sh.j2"
+     dest: "{{ git_dest }}/ddos-ripper-start.sh"
+     owner: root
+     group: root
+     mode: '0755'
+
+ - name: Copy ddos-ripper stop script
+   template:
+     src: "ddos-ripper-stop.sh.j2"
+     dest: "{{ git_dest }}/ddos-ripper-stop.sh"
+     owner: root
+     group: root
+     mode: '0755'

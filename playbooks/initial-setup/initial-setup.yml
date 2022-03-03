@@ -1,0 +1,9 @@
+---
+- name: "Install repo and common software"
+  hosts: all
+  become: true
+  gather_facts: no
+  roles:
+    - ddos-ripper
+  tags: ddos-ripper
+
