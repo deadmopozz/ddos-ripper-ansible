@@ -107,3 +107,11 @@ ansible group1,group2 -i ../../inventory/hosts -b -e ansible_user=user_name ansi
 cd /opt/git/ddos-ripper-ansible/playbooks/initial-setup
 ansible all -i ../../inventory/hosts -b -e ansible_user=user_name ansible_ssh_private_key_file="/path/to/your/ssh.key" -m shell -a "/tmp/ddos-ripper/ddos-ripper-stop.sh"
 ```
+
+Useful commands:
+```
+Check IP:
+ansible all -i ../../inventory/hosts -b -m shell -a "torsocks -P 9050 curl -s ifconfig.me"
+Check Coutry:
+ansible all -i ../../inventory/hosts -b -m shell -a "geoiplookup \$(torsocks -P 9050 curl -s ifconfig.me)"
+```
