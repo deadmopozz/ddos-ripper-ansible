@@ -1,6 +1,6 @@
 **Usage:**
 
-# 1. Install python3 and Ansible*
+# 1. Install python3 and Ansible
 ```
 sudo apt install python3 python3-pip
 sudo -H pip3 install --upgrade pip
@@ -62,7 +62,7 @@ host1
 host2
 ```
 
-# 3. Run playbook and start/stop attack:
+# 3. Run installation playbook and start/stop attack:
 
 ## You must have the same username and password or ssh key for each server
 
