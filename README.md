@@ -40,7 +40,8 @@ cd /opt/git
 git clone https://github.com/deadmopozz/ddos-ripper-ansible.git
 ```
 
-#2. Prepare inventory /opt/git/ddos-ripper-ansible/inventory/hosts:
+2. Prepare inventory /opt/git/ddos-ripper-ansible/inventory/hosts:
+
 - add your hosts as follow:
 ```
 [all]
@@ -61,11 +62,11 @@ host1
 host2
 ```
 
-#3. Run playbook and start/stop attack:
+3. Run playbook and start/stop attack:
 
-##You must have the same username and password or ssh key for each server
+#You must have the same username and password or ssh key for each server
 
-##If you use username and password for ssh authentication:
+#If you use username and password for ssh authentication:
 ```
 cd /opt/git/ddos-ripper-ansible/playbooks/initial-setup
 ansible-playbook -i ../../inventory/hosts initial-setup.yml -b -kK -e ansible_user=user_name
