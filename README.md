@@ -85,7 +85,7 @@ kozak4
 ```
 
 # 3. Before the atack you should check the connection to target (torsocks telnet [target] [port]):
-If you see the output below, then the atack will be successful
+If you see the output below, then the attack will be successful
 ```
 # torsocks telnet google.com 443
 Trying 142.250.217.110...
@@ -99,22 +99,22 @@ If the output will be like this:
 Trying 142.250.217.110...
 ```
 You should restart tor "systemctl restart tor" and try again.
-If it doesn't help, try to change ExitNode to another country, and try again
+If it doesn't help, try to change ExitNode to another country, and try again.
 If nothing helps - change the target
 
 # 4. Run installation playbook and start the attack:
 
-## You must have the same username and password or ssh key for each server
-## After playbook run has finished - attack has started, you can check logs /var/log/syslog for details
-## If you want to change target you need to change the variables (Target vars) in /opt/git/ddos-ripper-ansible/inventory/hosts file and rerun the playbook
+### You must have the same username and password or ssh key for each server
+### After playbook run has finished - attack has started, you can check logs /var/log/syslog for details
+### If you want to change target you need to change the variables (Target vars) in /opt/git/ddos-ripper-ansible/inventory/hosts file and rerun the playbook
 
-## - If you use username and password for ssh authentication (username should be configured in inventory file /opt/git/ddos-ripper-ansible/inventory/hosts):
+### - If you use username and password for ssh authentication (username should be configured in inventory file /opt/git/ddos-ripper-ansible/inventory/hosts):
 ```
 cd /opt/git/ddos-ripper-ansible/playbooks/initial-setup
 ansible-playbook -i ../../inventory/hosts initial-setup.yml -b -kK 
 ```
 
-## - If you use ssh key for ssh authentication (username and path to ssh key file should be configured in inventory file /opt/git/ddos-ripper-ansible/inventory/hosts):
+### - If you use ssh key for ssh authentication (username and path to ssh key file should be configured in inventory file /opt/git/ddos-ripper-ansible/inventory/hosts):
 ```
 cd /opt/git/ddos-ripper-ansible/playbooks/initial-setup
 ansible-playbook -i ../../inventory/hosts initial-setup.yml -b 
