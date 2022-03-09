@@ -106,7 +106,7 @@ If nothing helps - change the target
 
 ## You must have the same username and password or ssh key for each server
 ## After playbook run has finished - attack has started, you can check logs /var/log/syslog for details
-## If you want to change target you need to change the variables (Target vars) in /opt/git/ddos-ripper-ansible/inventory/hosts file
+## If you want to change target you need to change the variables (Target vars) in /opt/git/ddos-ripper-ansible/inventory/hosts file and rerun the playbook
 
 ## - If you use username and password for ssh authentication (username should be configured in inventory file /opt/git/ddos-ripper-ansible/inventory/hosts):
 ```
