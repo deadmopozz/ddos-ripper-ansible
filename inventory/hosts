@@ -1,9 +1,9 @@
 # Add hosts to this group
 [all]
-kozak1      ansible_host=18.185.27.178
-kozak2      ansible_host=3.70.97.106
-kozak3      ansible_host=18.193.115.92
-kozak4      ansible_host=35.158.96.91
+kozak1      ansible_host=192.168.0.1
+kozak2      ansible_host=192.168.0.2
+kozak3      ansible_host=192.168.0.3
+kozak4      ansible_host=192.168.0.4
 
 
 [all:vars]
@@ -22,7 +22,7 @@ MemoryMax=550M
 CPUQuota=85%
 
 # Tor vars
-ExitNodes='ExitNodes {us}'
+ExitNodes='ExitNodes {ru}'
 
 # Target vars
 target=127.0.0.1
